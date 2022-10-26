@@ -10,6 +10,17 @@ public class Program
 	//[access modifier] [modifier] [return type] [method name] ([parameters])
 	public static void Main()
 	{
+		string contflag;
+		while(true){
+			CoinFlipper();
+			Console.WriteLine("Press Enter to play again. Type anything else to exit.\n");
+			contflag = Console.ReadLine();
+			if (contflag!="") break;
+		}
+		
+	}
+
+	public static void CoinFlipper(){
 		Console.WriteLine("Starting Coin Flipper:");
 		
 		Console.WriteLine("Enter the number of coins to flip: ");
