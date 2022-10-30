@@ -2,14 +2,14 @@ using System;
 
 namespace PokemonApp{
 
-    class Pokemon{
+    class Pokemon : Animal {
         
         //Fields - by default they are Private. 
-        public string Name {get; set;}
-        public int DexNumber {get; set;}
-        public string? Type {get; set;}
-        public int? Health {get; set;}
-        public string? Ability {get; set;}
+        public string name {get; set;}
+        int DexNumber {get; set;}
+        string type {get; set;}
+        int health {get; set;}
+        string ability {get; set;}
 
         //Static field - every pokemon shares this field and it's value
         public static string isPokemon = "This is a static field. We've been through this, I'm in fact a pokemon.";
@@ -17,32 +17,28 @@ namespace PokemonApp{
         //Constructor - method used for object initialization. We pass it the values we want 
         //to set for the object we are creating.
 
-        public Pokemon(string PokemonName, int PokemonNum, string PokemonType, int PokemonHealth=0, string PokemonAbility = "default?"){
+        public Pokemon(string PokemonName, int PokemonNum, string PokemonType, int PokemonHealth, string PokemonAbility = "default?") : base() {
 
-            this.Name = PokemonName;
+            this.name = PokemonName;
             this.DexNumber = PokemonNum;
-            this.Type = PokemonType;
-            this.Health = PokemonHealth;
-            this.Ability = PokemonAbility;
+            this.type = PokemonType;
+            this.health = PokemonHealth;
+            this.ability = PokemonAbility;
         }
 
 
-        public Pokemon(){
-            Name="Ditto";
-            DexNumber=132;
-            Type="Normal";
-            Health=48;
-            Ability="Limber";
+        public Pokemon() : base() {
+
         }
 
-        public Pokemon(string PokemonName){
-            Name=PokemonName;
+        public Pokemon(string PokemonName, string color, string habitat) : base( color, habitat ) {
+            this.name = PokemonName;
             this.DexNumber = 12;
         }
 
         //Instance method - depends on the state of an instance of that class. Belongs to the object. 
         public void PrintName(){
-            Console.WriteLine("My name is " + this.Name + "." + " My number is " + this.DexNumber + ". My ability is " + this.Ability);
+            Console.WriteLine("My name is " + this.name + "." + " My number is " + this.DexNumber + ". My ability is " + this.ability);
 
         }
 
@@ -53,7 +49,7 @@ namespace PokemonApp{
 
         //Method Overriding - ToString()
         public override string ToString(){
-            return this.Name + " " + this.Type;
+            return this.name + " " + this.type;
         }
     }
 
