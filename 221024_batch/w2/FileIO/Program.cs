@@ -1,4 +1,4 @@
-﻿namespace FileIO{
+﻿namespace Wordle{
 
     public class Program {
         //consider some struct/class that's just a string and some ConsoleColors
@@ -16,6 +16,9 @@
             //ColorString[] guesses = new ColorString[6];
             ConsoleColor[] feedback = {ConsoleColor.Gray,ConsoleColor.Gray,ConsoleColor.Gray,ConsoleColor.Gray,ConsoleColor.Gray};
             
+            //Get a user
+            User player = GetUser();
+
             //game loop
             while(turns<6){
                 Console.WriteLine("Guess: ");
@@ -63,13 +66,39 @@
             }//end of while
 
             Console.Write(solved?"Solved ":"Not solved ");
-            Console.Write("within {0} turn(s). The word was: {1}",turns,secret);
+            Console.Write("within {0} turn(s). The word was: {1}\n",turns,secret);
+
+            //Update Played, Wins (if user won), turnsPerWin(if user won)
+            player.Played++;
+            if (solved) {
+                player.Wins++;
+                player.incTurns(turns-1);
+            }
+            Console.Write(player.ToString());
         }
 
         //Print a char with a specific background color
         private static void printcolor(char c, ConsoleColor cc){
             Console.BackgroundColor=cc;
             Console.Write("{0}",c);
+        }
+
+        private static User GetUser(){
+            //get User info
+            string userpath = "./.Users.txt";
+            User u;
+            string user, pass="";
+            Console.WriteLine("Enter a username:");
+            user = Console.ReadLine();
+            
+            //if User recognized, prompt password and load user
+            Console.WriteLine("User {0} found. Enter a password",user);
+            //while()
+
+            //User not recognized, make new User
+            u = new User(user, pass);
+
+            return u;
         }
     }
         

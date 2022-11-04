@@ -1,6 +1,6 @@
 using System;
 
-namespace FileIO {
+namespace Wordle {
     public class ColorString{
         //Fields
         string S {get;set;}
