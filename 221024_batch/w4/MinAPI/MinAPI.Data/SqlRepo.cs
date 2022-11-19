@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -44,7 +45,7 @@ namespace MinAPI.Data
             return result;
         }
 
-        public Person createNewPerson(string connectionstring, string fname, string lname)
+        public Person Create(string connectionstring, string fname, string lname)
         {
             //this._connectionstring = connectionstring;
             using SqlConnection connection = new SqlConnection(connectionstring);
@@ -82,14 +83,14 @@ namespace MinAPI.Data
             return noPerson;
         }
 
-        public string getPersonName(string connectionstring, int ID)
+        public Person Get(string connectionstring, int ID)
         {
             //this._connectionstring = connectionstring;
-            string? name = "";
+            var person = new Person();
             using SqlConnection connection = new SqlConnection(connectionstring);
             connection.Open();
 
-            string cmdS = "SELECT f_name, l_name FROM Min.Person WHERE ID=@id;";
+            string cmdS = "SELECT * FROM Min.Person WHERE ID=@id;";
 
             using SqlCommand cmd = new(cmdS, connection);
             cmd.Parameters.AddWithValue("@id", ID);
@@ -98,13 +99,44 @@ namespace MinAPI.Data
 
             while (reader.Read())
             {
-                name = name + reader.GetString(0) + reader.GetString(1);
+                person.Id = reader.GetInt32(0);
+                person.Fname = reader.GetString(1);
+                person.Lname = reader.GetString(2);
             }
 
             connection.Close();
 
-            if (name != null) return name;
+            if (person != null) return person;
             else return null;
         }
+
+        public void Update(string connectionstring, int id, Person person)
+        {
+            using SqlConnection connection = new SqlConnection(connectionstring);
+
+            string cmdS = $"UPDATE Min.Person SET ID ='{person.Id}', f_name='{person.Fname}', l_name='{person.Lname}' WHERE ID={id};";
+            SqlCommand cmd = new SqlCommand(cmdS, connection);
+            connection.Open();
+            cmd.ExecuteNonQuery();
+            cmd.Dispose();
+            connection.Close();
+            return;
+        }
+
+        public void Delete(string connectionstring, int id)
+        {
+            using SqlConnection connection = new SqlConnection(connectionstring);
+
+            string cmdS = $"DELETE FROM Min.Person WHERE ID={id};";
+
+            SqlCommand cmd = new SqlCommand(cmdS, connection);
+            connection.Open();
+            cmd.ExecuteNonQuery();
+            cmd.Dispose();
+            connection.Close();
+
+            return;
+        }
+        
     }
 }

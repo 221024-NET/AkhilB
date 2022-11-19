@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging.Configuration;
 using Microsoft.Extensions.Primitives;
 using MinAPI.Data;
+using MinAPI.Logic;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = new ConfigurationBuilder()
@@ -57,10 +58,28 @@ app.MapGet("/weatherforecast", () =>
 
 app.MapGet("/hello", () => "Hello World!");
 
-app.MapGet("/persons", (SqlRepo repo) =>
+app.MapGet("/people", (SqlRepo repo) =>
     repo.getAllPersons(connvalue));
 
-app.MapGet("/console", () => Console.WriteLine("Option 1\nOption 2\n Option 3"));
+app.MapGet("/people/{id}", (int id, SqlRepo repo) => repo.Get(connvalue, id));
+
+app.MapPost("/people", (string fn, string ln, SqlRepo repo) =>
+{
+    Person p = repo.Create(connvalue, fn, ln);
+    return Results.Created($"/persons/{p.Id}", p);
+});
+
+app.MapPut("/people/{id}", (int id, Person p, SqlRepo repo) =>
+{
+    repo.Update(connvalue, id, p);
+    return Results.NoContent();
+});
+
+app.MapDelete("/people/{id}", (int id, SqlRepo repo) =>
+{
+    repo.Delete(connvalue, id);
+    return Results.Ok(id);
+});
 
 app.Run();
 

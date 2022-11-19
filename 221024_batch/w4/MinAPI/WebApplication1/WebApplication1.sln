@@ -5,9 +5,9 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication1", "WebApplication1.csproj", "{FEE3F94A-0776-4A6C-AB41-59849E516918}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinAPI.Data", "..\MinAPI.Data\MinAPI.Data.csproj", "{372A79BF-5BD5-48F3-8AA8-69FDC5C90E01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinAPI.Data", "..\MinAPI.Data\MinAPI.Data.csproj", "{372A79BF-5BD5-48F3-8AA8-69FDC5C90E01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinAPI.Logic", "..\MinAPI.Person\MinAPI.Logic.csproj", "{93EB99DE-CF0E-4F96-8254-2C4A3E3988AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinAPI.Logic", "..\MinAPI.Person\MinAPI.Logic.csproj", "{93EB99DE-CF0E-4F96-8254-2C4A3E3988AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
