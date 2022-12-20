@@ -3,10 +3,11 @@ from random import randrange, choices
 from datetime import date, timedelta
 import sys
 def main(k, n):
-    """Generate k random scores for the n restaurants in the Restaurant table
-       Also generate random dates YYYY-MM-DD for those n scores within the year 2022
-       Also pick a number from 1 to n (inclusive) to choose which restaurant gets which score
-       Print the final INSERT tuple
+    """
+        Generate k random scores for the n restaurants in the Restaurant table
+        Also generate random dates YYYY-MM-DD for those n scores within the year 2022
+        Also pick a number from 1 to n (inclusive) to choose which restaurant gets which score
+        Print the final INSERT tuple
     """
     #get our dates
     datestart, dateend = date(2022, 1, 1), date(2022, 12, 31)
@@ -17,7 +18,7 @@ def main(k, n):
         datestart += timedelta(days=1)
         dates.append(datestart)
 
-    #(<1-24>, <0-100>, 'YYYY-MM-DD')
+    #(<1-n>, <0-100>, 'YYYY-MM-DD')
     for i in range(k):
         s='('
         s+=str(randrange(1,n+1))
@@ -32,4 +33,10 @@ def main(k, n):
         
 
 if __name__=='__main__':
-    main(150, 25)
+    """
+    How to use: In the terminal, run the following command
+        python generate_scores.py k n
+    k - number of scores to generate
+    n - number of restaurants you want scores for
+    """
+    main(int(sys.argv[1]), int(sys.argv[2]))

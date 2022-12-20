@@ -1,11 +1,7 @@
---Run this script after running DB_setup.sql, so you can actually have the proc ready the next time
--- the DB_setup script is run to populate everything
-DROP PROCEDURE IF EXISTS RESTAURANTS.seed_DB;
-GO
+-- * Run this script after running DB_setup.sql, so you can actually have the proc ready the next time
+-- *    the DB_setup script is run to populate everything
 
-CREATE PROCEDURE RESTAURANTS.seed_DB AS
-BEGIN
---Start by seeding the restaurants
+-- * Start by seeding the restaurants
 INSERT INTO RESTAURANTS.Restaurant
     (rName, rAddress, rCity, rState, rCuisine, grade) 
     VALUES
@@ -35,7 +31,7 @@ INSERT INTO RESTAURANTS.Restaurant
     ('Regale Italian Eatery', '3850 S Las Vegas Blvd', 'Las Vegas', 'Nevada', 'Italian', 'A'),
     ('Regattabar', '1 Bennett St', 'Cambridge', 'Massachusetts', 'American', 'B');
 
---MenuItem next
+-- * MenuItem next
 INSERT INTO RESTAURANTS.MenuItem
     (restID, itemName, itemDescription, price)
     VALUES
@@ -93,8 +89,8 @@ INSERT INTO RESTAURANTS.MenuItem
     (15, 'Premium Chicken Tenders', 'Chicken tenders with choice of dipping sauce and two sides', 11.50),
     (15, 'Chicken fried Chicken', 'Fried boneless chicken breasts in country gravy', 12.20);
 
---Now for scores
---I won't come up with data here so I'll just run a python script that will generate the data for me
+-- * Now for scores
+-- * I won't come up with data here so I'll just run a python script that will generate the data for me
 INSERT INTO RESTAURANTS.Score
     (restID, points, reviewdate)
     VALUES
@@ -248,5 +244,4 @@ INSERT INTO RESTAURANTS.Score
     (22, 8, '2022-06-03'),
     (1, 49, '2022-02-03'),
     (9, 9, '2022-04-10');
---End of seed_DB procedure
-END
+-- * End of seeding

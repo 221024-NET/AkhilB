@@ -1,6 +1,7 @@
--- Single run script for creating the Restaurant Schema and tables
--- If RESTAURANTS schema is in the database and sans tables, just comment it out
--- If RESTAURANTS schema is not in the database yet, uncomment the CREATE SCHEMA and GO
+-- * Single run script for creating the Restaurant Schema and tables
+-- * If RESTAURANTS schema is in the database with no tables, just comment it out
+-- * If RESTAURANTS schema is not in the database yet, uncomment the CREATE SCHEMA and GO
+-- * After creation, run the script in dataseed.sql to populate the tables
 
 --CREATE SCHEMA RESTAURANTS;
 --GO
@@ -9,13 +10,6 @@ DROP TABLE RESTAURANTS.Score;
 DROP TABLE RESTAURANTS.Menuitem;
 DROP TABLE RESTAURANTS.Restaurant;
 GO
-
-
-/* CREATE TABLE RESTAURANTS.Franchise (
-    franchID INT PRIMARY KEY IDENTITY(1,1),
-    Name NVARCHAR(255) NOT NULL
-);
-GO */
 
 CREATE TABLE RESTAURANTS.Restaurant (
     restID INT IDENTITY(1,1),
@@ -26,10 +20,6 @@ CREATE TABLE RESTAURANTS.Restaurant (
     rCuisine VARCHAR(255) NOT NULL,
     grade CHAR(1) NOT NULL,
     CONSTRAINT PK_Restaurant_restID PRIMARY KEY CLUSTERED (restID),
-/*     CONSTRAINT FK_Restaurant_franchise FOREIGN KEY (franchise)
-        REFERENCES RESTAURANTS.Franchise (franchID)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE, */
     CHECK (grade in ('A', 'B', 'C', 'D'))
 );
 GO
@@ -60,6 +50,3 @@ CREATE TABLE RESTAURANTS.Score (
     CHECK (points BETWEEN 0 AND 100)
 )
 GO
-
-EXEC RESTAURANTS.seed_DB;
-GO 
