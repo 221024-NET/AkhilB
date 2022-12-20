@@ -1,23 +1,212 @@
---Let's start with a few franchises
-INSERT INTO RESTAURANTS.Franchise VALUES(
-    'McDonald'+char(39)+'s'
-);
-INSERT INTO RESTAURANTS.Franchise VALUES(
-    'Panda Express'
-);
-INSERT INTO RESTAURANTS.Franchise VALUES(
-    'Olive Garden'
-);
-INSERT INTO RESTAURANTS.Franchise VALUES(
-    'Raising Cane'+char(39)+'s'
-);
-INSERT INTO RESTAURANTS.Franchise VALUES(
-    'Taco Bell'
-);
-INSERT INTO RESTAURANTS.Franchise VALUES(
-    'Buca di Beppo'
-);
-INSERT INTO RESTAURANTS.Franchise VALUES(
-    'Red Lobster'
-);
+DROP PROCEDURE IF EXISTS RESTAURANTS.seed_DB;
 GO
+
+CREATE PROCEDURE RESTAURANTS.seed_DB AS
+BEGIN
+--Insert some data into the tables, starting with Franchises
+INSERT INTO RESTAURANTS.Franchise 
+    VALUES
+    ('McDonald'+char(39)+'s'),
+    ('Panda Express'),
+    ('Olive Garden'),
+    ('Raising Cane'+char(39)+'s'),
+    ('Taco Bell'),
+    ('Buca di Beppo'),
+    ('Red Lobster'),
+    ('L'+char(26)+'L Hawaiian Barbecue'),
+    ('Texas Roadhouse'),
+    ('Denny'+char(39)+'s');
+
+--Restaurants next
+INSERT INTO RESTAURANTS.Restaurant
+    (franchise, rAddress, rCity, rState, rCuisine, grade) 
+    VALUES
+    (1, '10701 Narcoossee Rd', 'Orlando', 'Florida', 'American', 'B'),
+    (1, '6875 Sand Lake Rd', 'Orlando', 'Florida', 'American', 'C'),
+    (7, '3552. E. Colonial Drive', 'Orlando', 'Florida', 'American', 'B'),
+    (2, '6000 Universal Blvd', 'Orlando', 'Florida', 'Chinese', 'C'),
+    (1, '13 E State St', 'Mt. Morris', 'New York', 'American', 'B'),
+    (2, '663 9th Ave', 'New York City', 'New York', 'Chinese', 'B'),
+    (3, '178 Wolf Rd', 'Colonie', 'New York', 'Italian', 'A'),
+    (7, '606 Sunrise Hwy', 'Valley Stream', 'New York', 'American', 'C'),
+    (5, '732 NY-28', 'Oneonta', 'New York', 'Mexican', 'D'),
+    (6, '1540 Broadway', 'New York City', 'New York', 'Italian', 'A'),
+    (8, '3205 SW Cedar Hills Blvd '+char(23)+'23', 'Beaverton', 'Oregon', 'Hawaiian', 'B'),
+    (9, '2323 South Rd', 'Poughkeepsie', 'New York', 'American', 'B'),
+    (2, '5500 Greenville Ave', 'Dallas', 'Texas', 'Chinese', 'C'),
+    (2, '39718 Lyndon B Johnson Fwy', 'Dallas', 'Texas', 'Chinese', 'B'),
+    (10, '2030 Market Center Blvd', 'Dallas', 'Texas', 'American', 'A'),
+    (7, '9069 Vantage Point Dr', 'Dallas', 'Texas', 'American', 'C'),
+    (7, '22800 Vanowen St', 'Los Angeles', 'California', 'American', 'B'),
+    (4, '1750 W Olive Ave', 'Los Angeles', 'California', 'American', 'C'),
+    (6, '17500 Ventura Blvd', 'Los Angeles', 'California', 'Italian', 'A'),
+    (3, '4835 Venice Blvd', 'Los Angeles', 'California', 'Italian', 'B'),
+    (2, '524 E Washington Blvd', 'Los Angeles', 'California', 'Chinese', 'C'),
+    (1, '1530 3rd Ave', 'Seattle', 'Washington', 'American', 'D'),
+    (2, '9999 Holman Rd', 'Seattle', 'Washington', 'Chinese', 'C');
+
+--MenuItem next
+INSERT INTO RESTAURANTS.MenuItem
+    (restID, itemName, itemDescription, price)
+    VALUES
+    (1, 'Chicken Sandwich', 'Crispy Chicken, lettuce, mayo, bread', 5.43),
+    (1, 'Big Mac', 'Two patties, lettuce, special sauce, extra middle bun', 7.03),
+    (1, 'Quarter Pounder', 'Quarter pound of beef, ketchup, onions, lettuce, cheese', 6.19),
+    (2, 'Chicken Sandwich', 'Crispy Chicken, lettuce, mayo, bread', 5.11),
+    (2, 'Big Mac', 'Two patties, lettuce, special sauce, extra middle bun', 6.50),
+    (2, 'Quarter Pounder', 'Quarter pound of beef, ketchup, onions, lettuce, cheese', 5.97),
+    (5, 'Chicken Sandwich', 'Crispy Chicken, lettuce, mayo, bread', 6.16),
+    (5, 'Big Mac', 'Two patties, lettuce, special sauce, extra middle bun', 8.11),
+    (5, 'Quarter Pounder', 'Quarter pound of beef, ketchup, onions, lettuce, cheese', 6.94),
+    (22, 'Chicken Sandwich', 'Crispy Chicken, lettuce, mayo, bread', 6.04),
+    (22, 'Big Mac', 'Two patties, lettuce, special sauce, extra middle bun', 7.84),
+    (22, 'Quarter Pounder', 'Quarter pound of beef, ketchup, onions, lettuce, cheese', 6.88),
+    (4, 'Orange Chicken', 'Chicken fried and coated in orange sauce', 4.12),
+    (4, 'Beijing Beef', 'Crispy beef frieed and tossed in spicy BBQ sauce', 4.60),
+    (4, 'Honey Walnut Shrimp', 'Shrimp cooked in a honey sauce and served with walnuts', 5.11),
+    (6, 'Orange Chicken', 'Chicken fried and coated in orange sauce', 4.86),
+    (6, 'Beijing Beef', 'Crispy beef frieed and tossed in spicy BBQ sauce', 5.14),
+    (6, 'Honey Walnut Shrimp', 'Shrimp cooked in a honey sauce and served with walnuts', 6.13),
+    (13, 'Orange Chicken', 'Chicken fried and coated in orange sauce', 4.25),
+    (13, 'Beijing Beef', 'Crispy beef frieed and tossed in spicy BBQ sauce', 4.43),
+    (13, 'Honey Walnut Shrimp', 'Shrimp cooked in a honey sauce and served with walnuts', 5.21),
+    (14, 'Orange Chicken', 'Chicken fried and coated in orange sauce', 4.31),
+    (14, 'Beijing Beef', 'Crispy beef frieed and tossed in spicy BBQ sauce', 4.52),
+    (14, 'Honey Walnut Shrimp', 'Shrimp cooked in a honey sauce and served with walnuts', 5.30),
+    (21, 'Orange Chicken', 'Chicken fried and coated in orange sauce', 6.11),
+    (21, 'Beijing Beef', 'Crispy beef frieed and tossed in spicy BBQ sauce', 6.23),
+    (21, 'Honey Walnut Shrimp', 'Shrimp cooked in a honey sauce and served with walnuts', 8.14),
+    (7, 'Fettuccine Alfredo', 'Fettuccine pasta tossed in creamy alfredo sauce', 17.40),
+    (7, 'Zuppa Toscana', 'Tuscan soup with Italian sausage, kale, bacon and potatoes', 9.14),
+    (7, 'Tiramisu cake', 'Coffee-flavored cake with ladyfingers and mascarpone cheese', 12.55),
+    (20, 'Fettuccine Alfredo', 'Fettuccine pasta tossed in creamy alfredo sauce', 19.66),
+    (20, 'Zuppa Toscana', 'Tuscan soup with Italian sausage, kale, bacon and potatoes', 11.21),
+    (20, 'Tiramisu cake', 'Coffee-flavored cake with ladyfingers and mascarpone cheese', 15.30),
+    (18, 'Caniac Combo', 'Five Chicken tenders, toast, slaw, and a drink', 18.40),
+    (9, 'Bean burrito', 'Beans, onions, and cheese in a tortilla', 2.35),
+    (10, 'Chicken Marsala', 'baby portobello mushrooms in a traditional Marsala wine reduction', 44.00),
+    (10, 'Chicken Parmigiana', 'topped with marinara sauce, mozzarella & garnished with parsley', 43.00),
+    (19, 'Chicken Marsala', 'baby portobello mushrooms in a traditional Marsala wine reduction', 46.00),
+    (19, 'Chicken Parmigiana', 'topped with marinara sauce, mozzarella & garnished with parsley', 45.50),
+    (3, 'Snow Crab Legs', 'North American crab, served with lemon and butter', 28.90),
+    (3, 'Fish and Chips', 'Battered cod, served with coleslaw and tartar sauce', 14.40),
+    (8, 'Snow Crab Legs', 'North American crab, served with lemon and butter', 30.30),
+    (8, 'Fish and Chips', 'Battered cod, served with coleslaw and tartar sauce', 16.07),
+    (16, 'Snow Crab Legs', 'North American crab, served with lemon and butter', 27.30),
+    (16, 'Fish and Chips', 'Battered cod, served with coleslaw and tartar sauce', 14.06),
+    (17, 'Snow Crab Legs', 'North American crab, served with lemon and butter', 32.50),
+    (17, 'Fish and Chips', 'Battered cod, served with coleslaw and tartar sauce', 18.44),
+    (11, 'BBQ Beef Bowl', 'BBQ Beef served with steamed veggies on rice', 17.88),
+    (11, 'Chicken Katsu', 'Boneless, deep-fried chicken', 19.06),
+    (12, 'Ribeye', '20oz Ribeye', 27.80),
+    (12, 'Porterhouse', '23oz, Filet and strip on a T-bone', 28.90),
+    (15, 'Premium Chicken Tenders', 'Chicken tenders with choice of dipping sauce and two sides', 11.50),
+    (15, 'Chicken fried Chicken', 'Fried boneless chicken breasts in country gravy', 12.20);
+
+--Now for scores
+--I won't come up with data here so I'll just run a python script that will generate the data for me
+INSERT INTO RESTAURANTS.Score
+    (restID, points, reviewdate)
+    VALUES
+    (9, 51, '2022-02-08'),
+    (6, 62, '2022-08-20'),
+    (1, 54, '2022-06-05'),
+    (1, 3, '2022-05-08'),
+    (20, 83, '2022-09-11'),
+    (13, 45, '2022-10-30'),
+    (5, 84, '2022-09-03'),
+    (10, 69, '2022-09-08'),
+    (9, 36, '2022-07-10'),
+    (10, 74, '2022-08-17'),
+    (9, 86, '2022-08-25'),
+    (11, 35, '2022-10-01'),
+    (8, 74, '2022-03-12'),
+    (18, 16, '2022-09-21'),
+    (17, 27, '2022-07-13'),
+    (12, 62, '2022-11-07'),
+    (21, 83, '2022-01-31'),
+    (5, 41, '2022-08-04'),
+    (4, 10, '2022-12-19'),
+    (8, 81, '2022-01-01'),
+    (18, 5, '2022-02-17'),
+    (13, 69, '2022-11-20'),
+    (7, 21, '2022-08-06'),
+    (17, 46, '2022-04-30'),
+    (1, 31, '2022-12-08'),
+    (21, 33, '2022-08-06'),
+    (21, 19, '2022-07-12'),
+    (15, 93, '2022-12-20'),
+    (3, 27, '2022-02-21'),
+    (23, 54, '2022-04-25'),
+    (20, 30, '2022-08-05'),
+    (14, 0, '2022-02-21'),
+    (13, 28, '2022-09-20'),
+    (15, 50, '2022-02-27'),
+    (5, 77, '2022-06-11'),
+    (20, 76, '2022-04-14'),
+    (22, 0, '2022-04-22'),
+    (1, 68, '2022-01-29'),
+    (14, 38, '2022-03-26'),
+    (19, 8, '2022-09-23'),
+    (3, 88, '2022-06-11'),
+    (10, 32, '2022-12-26'),
+    (21, 85, '2022-09-17'),
+    (14, 18, '2022-10-31'),
+    (1, 0, '2022-05-18'),
+    (12, 39, '2022-05-13'),
+    (3, 64, '2022-11-30'),
+    (9, 52, '2022-03-27'),
+    (14, 70, '2022-04-20'),
+    (10, 44, '2022-12-30'),
+    (19, 80, '2022-11-04'),
+    (19, 71, '2022-02-15'),
+    (8, 95, '2022-10-11'),
+    (17, 7, '2022-03-13'),
+    (1, 48, '2022-10-02'),
+    (6, 10, '2022-04-23'),
+    (20, 77, '2022-01-15'),
+    (7, 97, '2022-05-23'),
+    (23, 82, '2022-04-11'),
+    (4, 75, '2022-06-04'),
+    (1, 15, '2022-08-15'),
+    (15, 21, '2022-06-06'),
+    (3, 100, '2022-02-27'),
+    (19, 30, '2022-12-20'),
+    (2, 85, '2022-10-08'),
+    (13, 96, '2022-12-06'),
+    (19, 84, '2022-05-08'),
+    (20, 65, '2022-10-11'),
+    (4, 97, '2022-08-10'),
+    (3, 8, '2022-02-14'),
+    (19, 35, '2022-08-21'),
+    (10, 40, '2022-03-13'),
+    (11, 83, '2022-08-29'),
+    (21, 20, '2022-06-30'),
+    (19, 36, '2022-07-13'),
+    (18, 53, '2022-09-30'),
+    (10, 87, '2022-07-18'),
+    (8, 36, '2022-10-08'),
+    (22, 17, '2022-05-28'),
+    (13, 46, '2022-11-01'),
+    (13, 15, '2022-11-19'),
+    (17, 31, '2022-02-01'),
+    (13, 41, '2022-05-05'),
+    (10, 29, '2022-01-25'),
+    (6, 18, '2022-04-09'),
+    (15, 76, '2022-05-02'),
+    (6, 68, '2022-03-24'),
+    (21, 45, '2022-07-23'),
+    (13, 26, '2022-11-30'),
+    (15, 87, '2022-04-22'),
+    (4, 6, '2022-07-19'),
+    (23, 27, '2022-06-13'),
+    (5, 0, '2022-07-31'),
+    (7, 86, '2022-03-09'),
+    (7, 51, '2022-11-07'),
+    (4, 11, '2022-10-05'),
+    (3, 72, '2022-11-22'),
+    (6, 52, '2022-01-01'),
+    (1, 10, '2022-08-05'),
+    (4, 1, '2022-04-06');
+--End of seed_DB procedure
+END
