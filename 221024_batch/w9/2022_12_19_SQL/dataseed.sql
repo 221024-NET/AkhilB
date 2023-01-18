@@ -2,37 +2,69 @@
 -- *    the DB_setup script is run to populate everything
 
 -- * Start by seeding the restaurants
-INSERT INTO RESTAURANTS.Restaurant
-    (rName, rAddress, rCity, rState, rCuisine, grade) 
+INSERT INTO RST.Restaurant
+    (rName, rAddress, rCity, rState, grade) 
     VALUES
-    ('McDonald'+char(39)+'s', '10701 Narcoossee Rd', 'Orlando', 'Florida', 'American', 'B'),
-    ('McDonald'+char(39)+'s', '6875 Sand Lake Rd', 'Orlando', 'Florida', 'American', 'C'),
-    ('Red Lobster', '3552. E. Colonial Drive', 'Orlando', 'Florida', 'American', 'B'),
-    ('Panda Express', '6000 Universal Blvd', 'Orlando', 'Florida', 'Chinese', 'C'),
-    ('McDonald'+char(39)+'s', '13 E State St', 'Mt. Morris', 'New York', 'American', 'B'),
-    ('Panda Express', '663 9th Ave', 'New York City', 'New York', 'Chinese', 'B'),
-    ('Olive Garden', '178 Wolf Rd', 'Colonie', 'New York', 'Italian', 'A'),
-    ('Red Lobster', '606 Sunrise Hwy', 'Valley Stream', 'New York', 'American', 'C'),
-    ('Taco Bell', '732 NY-28', 'Oneonta', 'New York', 'Mexican', 'D'),
-    ('Buca di Beppo', '1540 Broadway', 'New York City', 'New York', 'Italian', 'A'),
-    ('L'+char(26)+'L Hawaiian Barbecue', '3205 SW Cedar Hills Blvd '+char(23)+'23', 'Beaverton', 'Oregon', 'Hawaiian', 'B'),
-    ('Texas Roadhouse', '2323 South Rd', 'Poughkeepsie', 'New York', 'American', 'B'),
-    ('Panda Express', '5500 Greenville Ave', 'Dallas', 'Texas', 'Chinese', 'C'),
-    ('Panda Express', '39718 Lyndon B Johnson Fwy', 'Dallas', 'Texas', 'Chinese', 'B'),
-    ('Denny'+char(39)+'s', '2030 Market Center Blvd', 'Dallas', 'Texas', 'American', 'A'),
-    ('Red Lobster', '9069 Vantage Point Dr', 'Dallas', 'Texas', 'American', 'C'),
-    ('Red Lobster', '22800 Vanowen St', 'Los Angeles', 'California', 'American', 'B'),
-    ('Raising Cane'+char(39)+'s', '1750 W Olive Ave', 'Los Angeles', 'California', 'American', 'C'),
-    ('Buca di Beppo', '17500 Ventura Blvd', 'Los Angeles', 'California', 'Italian', 'A'),
-    ('Olive Garden', '4835 Venice Blvd', 'Los Angeles', 'California', 'Italian', 'B'),
-    ('Panda Express', '524 E Washington Blvd', 'Los Angeles', 'California', 'Chinese', 'C'),
-    ('McDonald'+char(39)+'s', '1530 3rd Ave', 'Seattle', 'Washington', 'American', 'D'),
-    ('Panda Express', '9999 Holman Rd', 'Seattle', 'Washington', 'Chinese', 'C'),
-    ('Regale Italian Eatery', '3850 S Las Vegas Blvd', 'Las Vegas', 'Nevada', 'Italian', 'A'),
-    ('Regattabar', '1 Bennett St', 'Cambridge', 'Massachusetts', 'American', 'B');
+    ('McDonald'+char(39)+'s', '10701 Narcoossee Rd', 'Orlando', 'Florida', 'B'),
+    ('McDonald'+char(39)+'s', '6875 Sand Lake Rd', 'Orlando', 'Florida', 'C'),
+    ('Red Lobster', '3552. E. Colonial Drive', 'Orlando', 'Florida', 'B'),
+    ('Panda Express', '6000 Universal Blvd', 'Orlando', 'Florida', 'C'),
+    ('McDonald'+char(39)+'s', '13 E State St', 'Mt. Morris', 'New York', 'B'),
+    ('Panda Express', '663 9th Ave', 'New York City', 'New York', 'B'),
+    ('Olive Garden', '178 Wolf Rd', 'Colonie', 'New York', 'A'),
+    ('Red Lobster', '606 Sunrise Hwy', 'Valley Stream', 'New York', 'C'),
+    ('Taco Bell', '732 NY-28', 'Oneonta', 'New York', 'D'),
+    ('Buca di Beppo', '1540 Broadway', 'New York City', 'New York', 'A'),
+    ('L'+char(26)+'L Hawaiian Barbecue', '3205 SW Cedar Hills Blvd '+char(23)+'23', 'Beaverton', 'Oregon', 'B'),
+    ('Texas Roadhouse', '2323 South Rd', 'Poughkeepsie', 'New York', 'B'),
+    ('Panda Express', '5500 Greenville Ave', 'Dallas', 'Texas', 'C'),
+    ('Panda Express', '39718 Lyndon B Johnson Fwy', 'Dallas', 'Texas', 'B'),
+    ('Denny'+char(39)+'s', '2030 Market Center Blvd', 'Dallas', 'Texas', 'A'),
+    ('Red Lobster', '9069 Vantage Point Dr', 'Dallas', 'Texas', 'C'),
+    ('Red Lobster', '22800 Vanowen St', 'Los Angeles', 'California', 'B'),
+    ('Raising Cane'+char(39)+'s', '1750 W Olive Ave', 'Los Angeles', 'California', 'C'),
+    ('Buca di Beppo', '17500 Ventura Blvd', 'Los Angeles', 'California', 'A'),
+    ('Olive Garden', '4835 Venice Blvd', 'Los Angeles', 'California', 'B'),
+    ('Panda Express', '524 E Washington Blvd', 'Los Angeles', 'California', 'C'),
+    ('McDonald'+char(39)+'s', '1530 3rd Ave', 'Seattle', 'Washington', 'D'),
+    ('Panda Express', '9999 Holman Rd', 'Seattle', 'Washington', 'C'),
+    ('Regale Italian Eatery', '3850 S Las Vegas Blvd', 'Las Vegas', 'Nevada', 'A'),
+    ('Regattabar', '1 Bennett St', 'Cambridge', 'Massachusetts', 'B');
+GO
+
+-- * Cuisine table
+INSERT INTO RST.Cuisine
+    (restID, cuisName)
+    VALUES
+    (1, 'American'),
+    (2, 'American'),
+    (3, 'American'),
+    (5, 'American'),
+    (8, 'American'),
+    (12, 'American'),
+    (15, 'American'),
+    (16, 'American'),
+    (17, 'American'),
+    (18, 'American'),
+    (22, 'American'),
+    (25, 'American'),
+    (4, 'Chinese'),
+    (6, 'Chinese'),
+    (13, 'Chinese'),
+    (14, 'Chinese'),
+    (21, 'Chinese'),
+    (23, 'Chinese'),
+    (7, 'Italian'),
+    (10, 'Italian'),
+    (19, 'Italian'),
+    (20, 'Italian'),
+    (24, 'Italian'),
+    (9, 'Mexican'),
+    (11, 'Hawaiian');
+GO
 
 -- * MenuItem next
-INSERT INTO RESTAURANTS.MenuItem
+INSERT INTO RST.MenuItem
     (restID, itemName, itemDescription, price)
     VALUES
     (1, 'Chicken Sandwich', 'Crispy Chicken, lettuce, mayo, bread', 5.43),
@@ -88,10 +120,11 @@ INSERT INTO RESTAURANTS.MenuItem
     (12, 'Porterhouse', '23oz, Filet and strip on a T-bone', 28.90),
     (15, 'Premium Chicken Tenders', 'Chicken tenders with choice of dipping sauce and two sides', 11.50),
     (15, 'Chicken fried Chicken', 'Fried boneless chicken breasts in country gravy', 12.20);
+GO
 
 -- * Now for scores
 -- * I won't come up with data here so I'll just run a python script that will generate the data for me
-INSERT INTO RESTAURANTS.Score
+INSERT INTO RST.Score
     (restID, points, reviewdate)
     VALUES
     (14, 56, '2022-05-17'),
@@ -244,4 +277,5 @@ INSERT INTO RESTAURANTS.Score
     (22, 8, '2022-06-03'),
     (1, 49, '2022-02-03'),
     (9, 9, '2022-04-10');
+GO
 -- * End of seeding
