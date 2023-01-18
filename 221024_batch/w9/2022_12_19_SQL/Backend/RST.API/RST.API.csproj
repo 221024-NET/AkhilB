@@ -4,6 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>41d0bf41-4c6b-4735-a127-2649fa82d513</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,7 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RST.Data\RST.Data.csproj" />
-    <ProjectReference Include="..\RST.Models\RST.Models.csproj"/>
+    <ProjectReference Include="..\RST.Models\RST.Models.csproj" />
   </ItemGroup>
 
 </Project>
