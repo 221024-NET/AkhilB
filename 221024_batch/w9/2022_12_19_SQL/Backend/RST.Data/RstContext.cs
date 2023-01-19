@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using System.Transactions;
 using RST.Models;
 
 namespace RST.Data;
 
-public class RstContext : DbContext
+public class RstContext : DbContext, IRstContext
 {
     public RstContext (DbContextOptions<RstContext> options)
         : base(options) {}

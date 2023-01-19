@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { RouterModule, Routes, Router } from '@angular/router';
+import { RestaurantComponent } from './components/restaurant/restaurant.component';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Angular';
+  constructor(private router: Router) { }
+  goToRestaurant() {
+    this.router.navigate(['/restaurant']);
+  }
+
 }

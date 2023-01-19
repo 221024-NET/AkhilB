@@ -1,0 +1,25 @@
+<style>
+    table, tr {
+        border: 1px black;
+    }
+</style>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Grade</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let restaurant of restaurants">
+            <td>{{restaurant.rName}}</td>
+            <td>{{restaurant.rAddress}}</td>
+            <td>{{restaurant.rCity}}</td>
+            <td>{{restaurant.rState}}</td>
+            <td>{{restaurant.grade}}</td>
+        </tr>
+    </tbody>
+</table>
